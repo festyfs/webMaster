@@ -18,7 +18,13 @@
 			$query->execute();
 			return $query->fetchAll();		
 		}
-		
+
+		public function showCategoryDetail($parent_id){
+			$query=$this->koneksi->prepare("SELECT * FROM categories  WHERE parent = :parent_id");	
+			$query->BindParam(':parent_id',$parent_id);	
+			$query->execute();
+			return $query->fetchAll();		
+		}		
 	
 	}
 

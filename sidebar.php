@@ -4,21 +4,23 @@
 			<?php
 				include "function/Category.php";
 				$category = new Category;
-				$category = $category->showAll();
+				$category_data = $category->showAll();
 
-				for ($i=0; $i < sizeof($category) ; $i++) {  ?>
-					<li class="subMenu open"><a> $category["name"]</a>
-						<ul>
-						<li><a class="active" href="products.php"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
-						<li><a href="products.php"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
-						<li><a href="products.php"><i class="icon-chevron-right"></i>Mobile Phone (80)</a></li>
-						<li><a href="products.php"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
+				for ($i=0; $i < sizeof($category_data) ; $i++) {  ?>
+					<li class="subMenu open"><a> <?php echo $category_data[$i]["name"]; ?></a>
+						<ul  style="display:none">
+						<?php 
+							$category_detail = $category->showCategoryDetail($category_data[$i]["id"]);
+							for ($j=0; $j < sizeof($category_detail); $j++) { ?>
+								<a href="products.php?category_id=<?php echo $category_detail[$j]['id'];?>">
+								<li><i class="icon-chevron-right">					
+								</i>
+								<?php echo $category_detail[$j]["name"];?>
+								</a></li>
+						<?php } ?>						
 						</ul>
-					</li>
-					
-				<?php } ?>
-
-			?>
+					</li>					
+			<?php }	?>
 
 
 
