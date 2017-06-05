@@ -4,10 +4,25 @@
 			<?php
 				include "function/Category.php";
 				$category = new Category;
-				$data = $category->showAll();
+				$category = $category->showAll();
+
+				for ($i=0; $i < sizeof($category) ; $i++) {  ?>
+					<li class="subMenu open"><a> $category["name"]</a>
+						<ul>
+						<li><a class="active" href="products.php"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
+						<li><a href="products.php"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
+						<li><a href="products.php"><i class="icon-chevron-right"></i>Mobile Phone (80)</a></li>
+						<li><a href="products.php"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
+						</ul>
+					</li>
+					
+				<?php } ?>
 
 			?>
-			<li class="subMenu open"><a> ELECTRONICS [230]</a>
+
+
+
+			<!--<li class="subMenu open"><a> ELECTRONICS [230]</a>
 				<ul>
 				<li><a class="active" href="products.php"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
 				<li><a href="products.php"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
@@ -40,7 +55,7 @@
 			</li>
 			<li><a href="products.php">HEALTH & BEAUTY [18]</a></li>
 			<li><a href="products.php">SPORTS & LEISURE [58]</a></li>
-			<li><a href="products.php">BOOKS & ENTERTAINMENTS [14]</a></li>
+			<li><a href="products.php">BOOKS & ENTERTAINMENTS [14]</a></li>-->
 		</ul>
 		<br/>
 	</div>

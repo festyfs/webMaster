@@ -30,7 +30,7 @@
 
 	  if(isset($_GET["id"])){			
 		$id = $_GET["id"];
-		$data = $product->show($id);	
+		$data = $product->show($id);
 	}	
 ?>
 

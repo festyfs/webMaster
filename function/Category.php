@@ -14,7 +14,7 @@
 		}
 		
 		public function showAll(){
-			$query=$this->koneksi->prepare("SELECT * FROM categories");		
+			$query=$this->koneksi->prepare("SELECT * FROM categories  WHERE parent IS NULL");		
 			$query->execute();
 			return $query->fetchAll();		
 		}
