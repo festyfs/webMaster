@@ -1,5 +1,12 @@
 <div id="sidebar" class="span3">
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
+
+			<?php
+				include "function/Category.php";
+				$category = new Category;
+				$data = $category->showAll();
+
+			?>
 			<li class="subMenu open"><a> ELECTRONICS [230]</a>
 				<ul>
 				<li><a class="active" href="products.php"><i class="icon-chevron-right"></i>Cameras (100) </a></li>

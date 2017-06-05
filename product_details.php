@@ -6,16 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-<!--Less styles -->
-   <!-- Other Less css file //different less files has different color scheam
-	<link rel="stylesheet/less" type="text/css" href="themes/less/simplex.less">
-	<link rel="stylesheet/less" type="text/css" href="themes/less/classified.less">
-	<link rel="stylesheet/less" type="text/css" href="themes/less/amelia.less">  MOVE DOWN TO activate
-	-->
-	<!--<link rel="stylesheet/less" type="text/css" href="themes/less/bootshop.less">
-	<script src="themes/js/less.js" type="text/javascript"></script> -->
-	
-<!-- Bootstrap style --> 
     <link id="callCss" rel="stylesheet" href="themes/bootshop/bootstrap.min.css" media="screen"/>
     <link href="themes/css/base.css" rel="stylesheet" media="screen"/>
 <!-- Bootstrap style responsive -->	
@@ -33,7 +23,17 @@
 	
   </head>
 <body>
-<?php include "navbar.php"; ?>
+<?php include "navbar.php";
+	  include "function/Product.php";
+
+	  $product = new Product;
+
+	  if(isset($_GET["id"])){			
+		$id = $_GET["id"];
+		$data = $product->show($id);	
+	}	
+?>
+
 <!-- Header End====================================================================== -->
 <div id="mainBody">
 	<div class="container">
@@ -46,31 +46,14 @@
     <li><a href="index.php">Home</a> <span class="divider">/</span></li>
     <li><a href="products.php">Electronics</a> <span class="divider">/</span></li>
     <li><a href="products.php">Products</a> <span class="divider">/</span></li>
-    <li class="active">Fujifilm FinePix S2950 Digital Camera</li>
+    <li class="active"><?php echo $data["name"]?></li>
     </ul>	
 	<div class="row">	  
 			<div id="gallery" class="span3">
             <a href="themes/images/products/large/f1.jpg" title="Fujifilm FinePix S2950 Digital Camera">
 				<img src="themes/images/products/large/3.jpg" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera"/>
             </a>
-			<div id="differentview" class="moreOptopm carousel slide">
-                <div class="carousel-inner">
-                  <div class="item active">
-                   <a href="themes/images/products/large/f1.jpg"> <img style="width:29%" src="themes/images/products/large/f1.jpg" alt=""/></a>
-                   <a href="themes/images/products/large/f2.jpg"> <img style="width:29%" src="themes/images/products/large/f2.jpg" alt=""/></a>
-                   <a href="themes/images/products/large/f3.jpg" > <img style="width:29%" src="themes/images/products/large/f3.jpg" alt=""/></a>
-                  </div>
-                  <div class="item">
-                   <a href="themes/images/products/large/f3.jpg" > <img style="width:29%" src="themes/images/products/large/f3.jpg" alt=""/></a>
-                   <a href="themes/images/products/large/f1.jpg"> <img style="width:29%" src="themes/images/products/large/f1.jpg" alt=""/></a>
-                   <a href="themes/images/products/large/f2.jpg"> <img style="width:29%" src="themes/images/products/large/f2.jpg" alt=""/></a>
-                  </div>
-                </div>
-              <!--  
-			  <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-              <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a> 
-			  -->
-              </div>
+			
 			 Tell your friends this amazing thing : 
 			 <div class="btn-toolbar">
 			  <div class="btn-group">
@@ -80,11 +63,11 @@
 			</div>
 			</div>
 			<div class="span6">
-				<h3>Fujifilm FinePix S2950 Digital Camera  </h3>
+				<h3><?php  echo $data["name"];?> </h3>
 				<!-- <small><strong>600</strong> feedback from <strong>600</strong> transaction</small> -->
 				<hr class="soft"/>
 			
-				<h4>100 items in stock</h4>
+				<h4><?php echo $data["stock"]; ?> items in stock</h4>
 				<hr class="soft"/>
 				<form class="form-horizontal qtyFrm">
 				  <div class="control-group">
